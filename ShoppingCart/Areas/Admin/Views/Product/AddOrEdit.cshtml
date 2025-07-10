@@ -1,0 +1,83 @@
+﻿@model ShoppingCart.Models.Product
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-10">
+
+            <div class="col-sm-12 col-xl-10">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Product</h6>
+                    <form asp-action="AddOrEdit" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row mb-3">
+                            <label asp-for="Name" for="input3" class="col-sm-3 col-form-label">Product Name:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Name" type="text" class="form-control" id="input3">
+                            </div>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Name" for="input3" class="col-sm-3 col-form-label">Image:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Image" type="file" name="Files" class="form-control" id="input3">
+                            </div>
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="ProductColor" for="input3" class="col-sm-3 col-form-label">Product Color:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="ProductColor" type="text" class="form-control">
+                            </div>
+                            <span asp-validation-for="ProductColor" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Price" for="input3" class="col-sm-3 col-form-label">Price:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Price" type="text" class="form-control">
+                            </div>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="SpecialTagId" for="input3" class="col-sm-3 col-form-label">SpecialTagId:</label>
+                            <div class="col-sm-9">
+                                <select asp-for="SpecialTagId" asp-items="@( new SelectList(ViewBag.SpecialTag,"Id","Name"))" class="col-sm-3 col-form-label"> ></select>
+                            </div>
+                            <span asp-validation-for="SpecialTagId" class="text-danger"></span>
+                        </div>
+                        <!--we have to write in selectlist the property that in the class itself -->
+                        <div class="row mb-3">
+                            <label asp-for="CategoryId" for="input3" class="col-sm-3 col-form-label">Category:</label>
+                            <div class="col-sm-9">
+                                <select asp-for="CategoryId" asp-items="@( new SelectList(ViewBag.Category,"Id","Name"))" class="col-sm-3 col-form-label"> </select>
+                            </div>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="IsAvailable" for="input3" class="col-sm-3 col-form-label">Available</label>
+                            <div class="col-sm-9">
+                                <input asp-for="IsAvailable" type="checkbox" >
+                            </div>
+                            <span asp-validation-for="IsAvailable" class="text-danger"></span>
+                        </div>
+
+
+
+                        <button asp-action="AddOrEdit" asp-route-id="Id" type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-2">
+                @if (Model.Id > 0)
+                {
+                <img src="@string.Format("uploads/{0}",Model.Image)" />
+                    
+                }
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+          

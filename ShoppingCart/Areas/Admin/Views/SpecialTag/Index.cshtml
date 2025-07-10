@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SpecialTag>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-8">
+
+            <div class="bg-light rounded h-100 p-4">
+                <a asp-action="AddOrEdit" class="btn btn-primary mb-4">Add Category</a>
+                <h6 class="mb-4">Categories</h6>
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Special Tag</th>
+                                <th scope="col">Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>@item.Id</th>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <a asp-action="AddOrEdit" asp-route-Id="@item.Id" class="btn btn-primary">Edit</a>
+                                        <a asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

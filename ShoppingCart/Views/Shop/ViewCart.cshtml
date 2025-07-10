@@ -1,0 +1,71 @@
+﻿@model ShoppingCart.ViewModel.ShoppingCartVM
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">s</h4>
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <th> Name</th>
+                                        <th>Image</th>
+                                        <th> color</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
+                                        <th>Special Tag</th>
+                                        <th>Available</th>
+                                        <th>Quentity</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model.CartItems)
+                                    {
+                                        <tr>
+                                  @*           <td>@item.Product.Name</td> *@
+                                            @* <td>@item.Product.Price</td>
+                                            <td>@item.Product.ProductColor</td>
+                                            
+                                            <td>@item.Quentity</td> *@
+                                            <td>
+
+                                                <a class="btn btn-danger">Remove</a>
+
+                                            </td>
+                                        </tr>
+                                    }
+
+
+
+
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-6">
+                                    <a asp-action="Index" class="btn btn-success">Back to Home</a>
+                                </div>
+                                <div class="col-6 text-end text-xl-end ">
+                                    <h6>Total Amount:@Model.TotalQuentity</h6>
+
+                                    <h6>Grant Total:@Model.TotalPrice</h6>
+                                    <a asp-area="Customer" asp-controller="Order" asp-action="Checkout" class="btn btn-info">checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+

@@ -1,0 +1,117 @@
+﻿@model ShoppingCart.Models.Order
+@using ShoppingCart.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor 
+@{
+    ViewData["title"] = "Order Details";
+}
+@{
+    List<Product> products = HttpContextAccessor.HttpContext.Session.GetObject<List<Product>>("products");
+    if(products!=null)
+    {
+        products = new List<Product>();
+
+    }
+}
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-10">
+
+            <div class="col-sm-12 col-xl-10">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Product</h6>
+                    <form asp-action="Checkout" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row mb-3">
+                            <label asp-for="Name" for="input3" class="col-sm-3 col-form-label">Product Name:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Name" type="text" class="form-control" id="input3">
+                            </div>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Name" for="input3" class="col-sm-3 col-form-label">Phone Number:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="PhoneNumber" type="text"  class="form-control" id="input3">
+                            </div>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Address" for="input3" class="col-sm-3 col-form-label">Address:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Address" type="text" class="form-control">
+                            </div>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Email" for="input3" class="col-sm-3 col-form-label">Email:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Email" type="email" class="form-control">
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="OrderDate" for="input3" class="col-sm-3 col-form-label">Order Date:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="OrderDate" type="date" class="col-sm-3 col-form-label"> 
+                            </div>
+                            <span asp-validation-for="OrderDate" class="text-danger"></span>
+                        </div>
+                        
+
+
+                        <button asp-action="AddOrEdit" asp-route-id="Id" type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-10 mt-4 mb-2">
+                <div class="bg-light rounded h-100 p-4">
+                    
+                 
+                    <div class="table-responsive mb-5">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @* @foreach (var item in products)
+                                {
+                                    <tr>
+                                        <td>
+                                          <img src=@string.Format("/uploads/{0}",item.Image) >
+                                        </td>
+                                        <th>@item.Name</th>
+                                        <td>@item.Price</td>
+                                    </tr>
+                                }
+
+ *@
+
+
+                            </tbody>
+                        </table>
+                        <br /><br />
+                        
+                        
+              @*   <h3>Total Price:@products.Sum(c=>c.Price)</h3> *@
+            </div>
+            <div class="form-group  text-end">
+                <input type="submit" class="btn btn-success" value="Place Order" />
+            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

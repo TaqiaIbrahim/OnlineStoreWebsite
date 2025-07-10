@@ -1,0 +1,33 @@
+﻿    @model ShoppingCart.Models.Category   
+
+<div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-10">
+                        
+                    <div class="col-sm-12 col-xl-10">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Category</h6>
+                            <form asp-action="AddOrEdit">
+                                <input type="hidden" asp-for="Id" />
+                                <div class="row mb-3">
+                                    <label  asp-for="Name"   for="input3" class="col-sm-3 col-form-label">Category Name:</label>
+                                    <div class="col-sm-9">
+                                <input asp-for="Name" type="text" class="form-control" id="input3">
+                                    </div>
+                                <span  asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                
+                             
+                             
+                                <button asp-action="AddOrEdit" asp-route-id="Id" type="submit" class="btn btn-primary">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                   
+                  
+                          
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
